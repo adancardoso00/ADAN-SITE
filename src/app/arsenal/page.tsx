@@ -3,188 +3,234 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Arsenal — o que tenho e como chamar",
   description:
-    "Inventário de agentes, skills, comandos e MCPs disponíveis no projeto.",
+    "Inventário visual de agentes, skills, comandos e MCPs disponíveis no projeto.",
 };
 
-type Item = {
-  trigger: string;
-  name?: string;
-  desc: string;
-};
+type Item = { trigger: string; desc: string };
 
 type Section = {
   title: string;
-  subtitle?: string;
-  highlight?: boolean;
+  icon: string;
+  accent:
+    | "orange"
+    | "violet"
+    | "emerald"
+    | "sky"
+    | "zinc"
+    | "amber";
+  span?: "wide" | "tall";
   items: Item[];
 };
 
 const arsenal: Section[] = [
   {
     title: "Skills do projeto",
-    subtitle: "Criadas neste repo. Auto-invocadas pelo contexto.",
-    highlight: true,
+    icon: "🎯",
+    accent: "orange",
     items: [
-      {
-        trigger: "/carrossel",
-        name: "Carousel Writer",
-        desc: "Content Machine 5.2 (BrandsDecoded). Converte insumo em carrossel pronto, 5 etapas com travas.",
-      },
-      {
-        trigger: "/design",
-        name: "Princípios de Design",
-        desc: "Elementos + composição (Aranda) + conteúdo (Binac). Checklist pra validar peças visuais.",
-      },
-    ],
-  },
-  {
-    title: "Skills nativas (Claude Code)",
-    subtitle: "Comandos embutidos. Digite a barra.",
-    items: [
-      { trigger: "/run", desc: "Sobe o app e dirige pra ver mudança funcionando." },
-      { trigger: "/verify", desc: "Valida que uma mudança realmente faz o que devia." },
-      { trigger: "/code-review", desc: "Revisa o diff atual. Aceita --comment pra postar inline." },
-      { trigger: "/security-review", desc: "Auditoria de segurança das mudanças pendentes." },
-      { trigger: "/review", desc: "Review de uma PR específica." },
-      { trigger: "/init", desc: "Gera CLAUDE.md inicial com documentação do projeto." },
-      { trigger: "/loop", desc: "Roda um prompt/comando em intervalo recorrente (default 10min)." },
-      { trigger: "/update-config", desc: "Edita settings.json — permissões, hooks, env vars." },
-      { trigger: "/fewer-permission-prompts", desc: "Gera allowlist pra reduzir prompts de permissão." },
-      { trigger: "/keybindings-help", desc: "Customiza ~/.claude/keybindings.json." },
-      { trigger: "/session-start-hook", desc: "Cria hooks de inicialização pra Claude Code na web." },
-      { trigger: "/claude-api", desc: "Ajuda com Anthropic SDK, prompt caching, migração de modelos." },
+      { trigger: "/carrossel", desc: "Content Machine 5.2 — gera carrossel em 5 etapas" },
+      { trigger: "/design", desc: "Princípios de design + checklist visual" },
     ],
   },
   {
     title: "Agentes",
-    subtitle: "Sub-agentes que rodam em paralelo via Agent tool.",
+    icon: "🤖",
+    accent: "emerald",
     items: [
-      { trigger: "Explore", desc: "Busca rápida read-only — find files, grep símbolos, 'onde está X?'" },
-      { trigger: "Plan", desc: "Arquiteto de implementação. Gera plano step-by-step." },
-      { trigger: "general-purpose", desc: "Pesquisa complexa multi-step quando o especializado não cabe." },
-      { trigger: "claude-code-guide", desc: "Dúvidas sobre Claude Code CLI, Agent SDK, Claude API." },
-      { trigger: "statusline-setup", desc: "Configura a status line do Claude Code." },
-    ],
-  },
-  {
-    title: "MCPs ativos",
-    subtitle: "Servidores externos plugados nesta sessão.",
-    items: [
-      { trigger: "github", desc: "Repo ops (restrito a adancardoso00/adan-site). PRs, issues, CI, comments." },
-      { trigger: "supabase", desc: "DB, migrations, edge functions, advisors, logs." },
-      { trigger: "vercel", desc: "Deploys, projects, logs, toolbar threads." },
-      { trigger: "figma", desc: "Design context, screenshots, code connect, variables." },
-      { trigger: "base44", desc: "App builder — cria/edita apps, schemas, entidades." },
-      { trigger: "adobe", desc: "Express/Firefly — assets, edição de imagem, PDF, vídeo." },
-      { trigger: "gamma", desc: "Apresentações, docs, webpages geradas por IA." },
-      { trigger: "google drive", desc: "Buscar e ler arquivos do Drive." },
-      { trigger: "google calendar", desc: "Eventos, agendamentos, sugestão de horários." },
-      { trigger: "gmail", desc: "Threads, drafts, labels." },
-      { trigger: "granola", desc: "Notas e coleções pessoais." },
-      { trigger: "meta ads", desc: "Campanhas, públicos, catálogo, insights." },
-      { trigger: "spotify", desc: "Search, playlists, what's playing." },
-      { trigger: "captions", desc: "Geração de imagem/vídeo, virality predictor, clipper." },
-      { trigger: "autodesk", desc: "Catálogo de produtos e help content." },
-    ],
-  },
-  {
-    title: "Tools internas",
-    subtitle: "Built-in do Claude Code. Não tem trigger — Claude usa por conta.",
-    items: [
-      { trigger: "Read / Edit / Write", desc: "Arquivos locais." },
-      { trigger: "Bash", desc: "Shell. Comandos longos em background possíveis." },
-      { trigger: "WebFetch / WebSearch", desc: "Web. WebFetch lê URL pública, WebSearch indexa." },
-      { trigger: "ToolSearch", desc: "Carrega schemas de tools deferidas sob demanda." },
-      { trigger: "AskUserQuestion", desc: "Múltipla escolha estruturada (1–4 perguntas)." },
-      { trigger: "SendUserFile", desc: "Envia arquivo gerado pro chat (gráficos, PDFs)." },
+      { trigger: "Explore", desc: "Busca rápida read-only" },
+      { trigger: "Plan", desc: "Arquiteto de implementação" },
+      { trigger: "general-purpose", desc: "Pesquisa complexa multi-step" },
+      { trigger: "claude-code-guide", desc: "Dúvidas sobre Claude Code" },
+      { trigger: "statusline-setup", desc: "Configura status line" },
     ],
   },
   {
     title: "Setup local",
-    subtitle: "Scripts pra rodar Claude Code local com rtk.",
+    icon: "💾",
+    accent: "amber",
     items: [
-      { trigger: "./setup-local.sh", desc: "Bootstrap mac/Linux — Node, Rust, rtk, Claude Code CLI." },
-      { trigger: ".devcontainer/", desc: "VS Code devcontainer com stack pre-instalado." },
+      { trigger: "./setup-local.sh", desc: "Bootstrap Mac/Linux" },
+      { trigger: ".devcontainer/", desc: "VS Code container" },
+    ],
+  },
+  {
+    title: "Skills nativas",
+    icon: "⚡",
+    accent: "violet",
+    span: "tall",
+    items: [
+      { trigger: "/run", desc: "Sobe o app pra testar" },
+      { trigger: "/verify", desc: "Valida que mudança funciona" },
+      { trigger: "/code-review", desc: "Revisa diff atual" },
+      { trigger: "/security-review", desc: "Auditoria de segurança" },
+      { trigger: "/review", desc: "Review de PR" },
+      { trigger: "/init", desc: "Gera CLAUDE.md inicial" },
+      { trigger: "/loop", desc: "Roda em intervalo (10min)" },
+      { trigger: "/update-config", desc: "Edita settings.json" },
+      { trigger: "/fewer-permission-prompts", desc: "Gera allowlist" },
+      { trigger: "/keybindings-help", desc: "Customiza keybindings" },
+      { trigger: "/claude-api", desc: "Ajuda com SDK Anthropic" },
+    ],
+  },
+  {
+    title: "MCPs ativos",
+    icon: "🔌",
+    accent: "sky",
+    span: "tall",
+    items: [
+      { trigger: "github", desc: "Repo ops (adan-site)" },
+      { trigger: "supabase", desc: "DB + edge functions" },
+      { trigger: "vercel", desc: "Deploys + logs" },
+      { trigger: "figma", desc: "Design context" },
+      { trigger: "base44", desc: "App builder" },
+      { trigger: "adobe", desc: "Express + Firefly" },
+      { trigger: "gamma", desc: "Apresentações IA" },
+      { trigger: "google drive", desc: "Arquivos do Drive" },
+      { trigger: "google calendar", desc: "Eventos + agendas" },
+      { trigger: "gmail", desc: "Threads + drafts" },
+      { trigger: "granola", desc: "Notas e coleções" },
+      { trigger: "meta ads", desc: "Campanhas + catálogo" },
+      { trigger: "spotify", desc: "Search + playlists" },
+      { trigger: "captions", desc: "Vídeo IA + virality" },
+    ],
+  },
+  {
+    title: "Tools internas",
+    icon: "🔧",
+    accent: "zinc",
+    items: [
+      { trigger: "Read / Edit / Write", desc: "Arquivos locais" },
+      { trigger: "Bash", desc: "Shell + background" },
+      { trigger: "WebFetch / WebSearch", desc: "Web pública" },
+      { trigger: "ToolSearch", desc: "Schemas sob demanda" },
+      { trigger: "AskUserQuestion", desc: "Múltipla escolha" },
+      { trigger: "SendUserFile", desc: "Envia arquivo" },
     ],
   },
 ];
 
+const accents = {
+  orange: {
+    ring: "ring-orange-500/40 dark:ring-orange-400/30",
+    bar: "bg-orange-500 dark:bg-orange-400",
+    bg: "bg-orange-50 dark:bg-orange-950/30",
+    text: "text-orange-700 dark:text-orange-300",
+    chip: "bg-orange-100 text-orange-900 dark:bg-orange-900/40 dark:text-orange-200",
+  },
+  violet: {
+    ring: "ring-violet-500/30 dark:ring-violet-400/20",
+    bar: "bg-violet-500 dark:bg-violet-400",
+    bg: "bg-violet-50 dark:bg-violet-950/30",
+    text: "text-violet-700 dark:text-violet-300",
+    chip: "bg-violet-100 text-violet-900 dark:bg-violet-900/40 dark:text-violet-200",
+  },
+  emerald: {
+    ring: "ring-emerald-500/30 dark:ring-emerald-400/20",
+    bar: "bg-emerald-500 dark:bg-emerald-400",
+    bg: "bg-emerald-50 dark:bg-emerald-950/30",
+    text: "text-emerald-700 dark:text-emerald-300",
+    chip: "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-200",
+  },
+  sky: {
+    ring: "ring-sky-500/30 dark:ring-sky-400/20",
+    bar: "bg-sky-500 dark:bg-sky-400",
+    bg: "bg-sky-50 dark:bg-sky-950/30",
+    text: "text-sky-700 dark:text-sky-300",
+    chip: "bg-sky-100 text-sky-900 dark:bg-sky-900/40 dark:text-sky-200",
+  },
+  zinc: {
+    ring: "ring-zinc-400/30 dark:ring-zinc-500/30",
+    bar: "bg-zinc-500 dark:bg-zinc-400",
+    bg: "bg-zinc-50 dark:bg-zinc-900/40",
+    text: "text-zinc-700 dark:text-zinc-200",
+    chip: "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-50",
+  },
+  amber: {
+    ring: "ring-amber-500/30 dark:ring-amber-400/20",
+    bar: "bg-amber-500 dark:bg-amber-400",
+    bg: "bg-amber-50 dark:bg-amber-950/30",
+    text: "text-amber-700 dark:text-amber-300",
+    chip: "bg-amber-100 text-amber-900 dark:bg-amber-900/40 dark:text-amber-200",
+  },
+} as const;
+
+const spans = {
+  wide: "md:col-span-2",
+  tall: "md:row-span-2",
+} as const;
+
 export default function ArsenalPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-16 sm:px-10 sm:py-24">
-      <header className="mb-16 sm:mb-24">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
-          Inventário
-        </p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Arsenal
-        </h1>
-        <p className="mt-4 max-w-md text-base leading-7 text-zinc-600 dark:text-zinc-400">
-          O que está disponível e como chamar. Aberto pra lembrar — não pra ler
-          inteiro.
-        </p>
-      </header>
+    <main className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+      <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-10 sm:py-16">
+        <header className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+              Inventário
+            </p>
+            <h1 className="mt-2 text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl">
+              Arsenal
+            </h1>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+            Bate o olho. Encontra. Chama. Aberto pra lembrar — não pra ler
+            inteiro.
+          </p>
+        </header>
 
-      <div className="space-y-16 sm:space-y-20">
-        {arsenal.map((section) => (
-          <section key={section.title} aria-labelledby={slug(section.title)}>
-            <div className="mb-6 flex items-baseline justify-between gap-4 border-b border-zinc-200 pb-3 dark:border-zinc-800">
-              <h2
-                id={slug(section.title)}
-                className={`text-xl font-semibold tracking-tight ${
-                  section.highlight ? "text-orange-600 dark:text-orange-400" : ""
-                }`}
+        <div className="grid auto-rows-min grid-cols-1 gap-5 md:grid-cols-3">
+          {arsenal.map((section) => {
+            const c = accents[section.accent];
+            const spanClass = section.span ? spans[section.span] : "";
+            return (
+              <section
+                key={section.title}
+                className={`group relative flex flex-col overflow-hidden rounded-2xl ring-1 transition ${c.bg} ${c.ring} ${spanClass} hover:ring-2`}
               >
-                {section.title}
-              </h2>
-              {section.subtitle && (
-                <p className="text-right text-xs text-zinc-500 sm:text-sm">
-                  {section.subtitle}
-                </p>
-              )}
-            </div>
-
-            <ul className="space-y-5">
-              {section.items.map((item) => (
-                <li
-                  key={item.trigger}
-                  className="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(0,14rem)_1fr] sm:gap-6"
-                >
-                  <div>
-                    <code className="font-mono text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                      {item.trigger}
-                    </code>
-                    {item.name && (
-                      <span className="ml-2 text-xs text-zinc-500">
-                        {item.name}
-                      </span>
-                    )}
+                <div className={`absolute inset-x-0 top-0 h-1 ${c.bar}`} />
+                <header className="flex items-center justify-between px-5 pt-5 pb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl leading-none" aria-hidden>
+                      {section.icon}
+                    </span>
+                    <h2
+                      className={`text-base font-semibold tracking-tight ${c.text}`}
+                    >
+                      {section.title}
+                    </h2>
                   </div>
-                  <p className="text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                    {item.desc}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
+                  <span
+                    className={`rounded-full px-2 py-0.5 font-mono text-[10px] font-medium ${c.chip}`}
+                  >
+                    {section.items.length}
+                  </span>
+                </header>
 
-      <footer className="mt-24 border-t border-zinc-200 pt-6 text-xs text-zinc-500 dark:border-zinc-800">
-        <p>
-          Atualizar este arquivo:{" "}
+                <ul className="flex flex-col gap-1 px-3 pb-4">
+                  {section.items.map((item) => (
+                    <li
+                      key={item.trigger}
+                      className="flex flex-col gap-0.5 rounded-lg px-2 py-1.5 transition hover:bg-white/60 dark:hover:bg-zinc-800/40"
+                    >
+                      <code className="font-mono text-[13px] font-semibold text-zinc-900 dark:text-zinc-100">
+                        {item.trigger}
+                      </code>
+                      <span className="text-xs leading-snug text-zinc-600 dark:text-zinc-400">
+                        {item.desc}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            );
+          })}
+        </div>
+
+        <footer className="mt-12 text-center text-xs text-zinc-500">
+          editar:{" "}
           <code className="font-mono">src/app/arsenal/page.tsx</code>
-        </p>
-      </footer>
+        </footer>
+      </div>
     </main>
   );
-}
-
-function slug(s: string) {
-  return s
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 }
