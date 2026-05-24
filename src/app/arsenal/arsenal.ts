@@ -56,6 +56,7 @@ export const arsenal: Section[] = [
     items: [
       { trigger: "/carrossel", desc: "Content Machine 5.2 — gera carrossel em 5 etapas" },
       { trigger: "/design", desc: "Princípios de design + checklist visual" },
+      { trigger: "/stamp-vibe-branding", desc: "Marca premium de produto físico em ~10min via AI (MJ + Gemini + Nanobanana)" },
     ],
   },
 
