@@ -1,13 +1,52 @@
-export type Item = { trigger: string; desc: string };
+export type Item = {
+  trigger: string;
+  desc: string;
+  /**
+   * If present, clicking the item opens this URL in a new tab
+   * instead of copying the trigger.
+   */
+  url?: string;
+};
+
+export type Accent =
+  | "orange"
+  | "violet"
+  | "emerald"
+  | "sky"
+  | "zinc"
+  | "amber"
+  | "rose"
+  | "teal"
+  | "lime";
 
 export type Section = {
   title: string;
   icon: string;
-  accent: "orange" | "violet" | "emerald" | "sky" | "zinc" | "amber";
+  accent: Accent;
   items: Item[];
 };
 
+// ─────────────────────────────────────────────────────────────────────────
+// EDITA ESTE ARQUIVO. Cada seção é um cartão.
+// - Item com `url`  → click abre em nova aba
+// - Item sem `url`  → click copia o `trigger` pro clipboard
+// ─────────────────────────────────────────────────────────────────────────
+
 export const arsenal: Section[] = [
+  // ─── O MEU ────────────────────────────────────────────────────────────
+  {
+    title: "Métodos próprios",
+    icon: "🧬",
+    accent: "rose",
+    items: [
+      { trigger: "Content Machine 5.2", desc: "Fluxo 5 etapas: Triagem → Capas → Espinha → Template → Render" },
+      { trigger: "Anatomia do Conteúdo Atômico", desc: "Hook → Mecanismo → Prova → Aplicação → Direção" },
+      { trigger: "9 Frameworks de Copy", desc: "Curiosa, Autoridade, Benefício, Pergunta, Testemunho, Lista, P&S, Passo a Passo, Segredo" },
+      { trigger: "5 Aberturas (slide 1)", desc: "Curiosidade, Provocação, Autoridade, Identificação, Benefício Direto" },
+      { trigger: "Princípios de Design (consolidado)", desc: "12 elementos + 8 princípios (Aranda) + 12 conteúdo (Binac)" },
+      { trigger: "Regra-mãe da capa", desc: "Linha 1 = reenquadramento + stake. Linha 2 = mecanismo + âncora." },
+    ],
+  },
   {
     title: "Skills do projeto",
     icon: "🎯",
@@ -17,6 +56,40 @@ export const arsenal: Section[] = [
       { trigger: "/design", desc: "Princípios de design + checklist visual" },
     ],
   },
+
+  // ─── APPS E LINKS ─────────────────────────────────────────────────────
+  {
+    title: "Apps & ferramentas",
+    icon: "🛠️",
+    accent: "teal",
+    items: [
+      { trigger: "Claude", desc: "claude.ai", url: "https://claude.ai" },
+      { trigger: "Granola", desc: "Notas/transcrições", url: "https://granola.ai" },
+      { trigger: "Gamma", desc: "Slides IA", url: "https://gamma.app" },
+      { trigger: "Captions", desc: "Vídeos IA + virality", url: "https://captions.ai" },
+      { trigger: "Adobe Firefly", desc: "Imagens IA", url: "https://firefly.adobe.com" },
+      { trigger: "Figma", desc: "Design", url: "https://figma.com" },
+      { trigger: "Vercel", desc: "Deploys", url: "https://vercel.com" },
+      { trigger: "GitHub", desc: "Código", url: "https://github.com/adancardoso00" },
+      { trigger: "Supabase", desc: "DB + auth", url: "https://supabase.com/dashboard" },
+      { trigger: "Meta Business", desc: "Ads + páginas", url: "https://business.facebook.com" },
+      { trigger: "Spotify", desc: "Música", url: "https://open.spotify.com" },
+    ],
+  },
+  {
+    title: "Contatos & links rápidos",
+    icon: "📌",
+    accent: "lime",
+    items: [
+      { trigger: "Drive", desc: "Google Drive", url: "https://drive.google.com" },
+      { trigger: "Calendar", desc: "Google Calendar", url: "https://calendar.google.com" },
+      { trigger: "Gmail", desc: "Inbox", url: "https://mail.google.com" },
+      // Adiciona contatos importantes aqui — ex.:
+      // { trigger: "Time core", desc: "Slack workspace", url: "https://app.slack.com/..." },
+    ],
+  },
+
+  // ─── CLAUDE CODE (este projeto / contexto técnico) ────────────────────
   {
     title: "Agentes",
     icon: "🤖",
@@ -92,7 +165,18 @@ export const arsenal: Section[] = [
   },
 ];
 
-export const accents = {
+export const accents: Record<
+  Accent,
+  {
+    ring: string;
+    bar: string;
+    bg: string;
+    text: string;
+    chip: string;
+    hover: string;
+    active: string;
+  }
+> = {
   orange: {
     ring: "ring-orange-300",
     bar: "bg-orange-500",
@@ -147,4 +231,31 @@ export const accents = {
     hover: "hover:bg-amber-100",
     active: "active:bg-amber-200",
   },
-} as const;
+  rose: {
+    ring: "ring-rose-300",
+    bar: "bg-rose-500",
+    bg: "bg-rose-50",
+    text: "text-rose-700",
+    chip: "bg-rose-100 text-rose-900",
+    hover: "hover:bg-rose-100",
+    active: "active:bg-rose-200",
+  },
+  teal: {
+    ring: "ring-teal-300",
+    bar: "bg-teal-500",
+    bg: "bg-teal-50",
+    text: "text-teal-700",
+    chip: "bg-teal-100 text-teal-900",
+    hover: "hover:bg-teal-100",
+    active: "active:bg-teal-200",
+  },
+  lime: {
+    ring: "ring-lime-400",
+    bar: "bg-lime-500",
+    bg: "bg-lime-50",
+    text: "text-lime-800",
+    chip: "bg-lime-100 text-lime-900",
+    hover: "hover:bg-lime-100",
+    active: "active:bg-lime-200",
+  },
+};
