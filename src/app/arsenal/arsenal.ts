@@ -132,6 +132,7 @@ export const arsenal: Section[] = [
       { trigger: "/run", desc: "Sobe o app pra testar" },
       { trigger: "/verify", desc: "Valida que mudança funciona" },
       { trigger: "/code-review", desc: "Revisa diff atual" },
+      { trigger: "/simplify", desc: "Limpa código: reuso, eficiência, altitude" },
       { trigger: "/security-review", desc: "Auditoria de segurança" },
       { trigger: "/review", desc: "Review de PR" },
       { trigger: "/init", desc: "Gera CLAUDE.md inicial" },
@@ -140,6 +141,7 @@ export const arsenal: Section[] = [
       { trigger: "/fewer-permission-prompts", desc: "Gera allowlist" },
       { trigger: "/keybindings-help", desc: "Customiza keybindings" },
       { trigger: "/claude-api", desc: "Ajuda com SDK Anthropic" },
+      { trigger: "/session-start-hook", desc: "Cria hook de startup pra sessões web" },
     ],
   },
   {
