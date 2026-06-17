@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CNVS: shared AI memory in JSONL — Reel Review",
+  title: "CNVS: memória de IA compartilhada em JSONL — Análise de Reel",
   description:
-    "A breakdown of @thedoomguy_ai's reel on CNVS, a tool that lets multiple AI agents share memory through plain JSONL files instead of a database.",
+    "Uma análise do reel de @thedoomguy_ai sobre o CNVS, uma ferramenta que permite que vários agentes de IA compartilhem memória através de arquivos JSONL simples em vez de um banco de dados.",
 };
 
 const REEL_URL = "https://www.instagram.com/reel/DZmy-LjATDH/";
@@ -49,21 +49,22 @@ export default function CnvsReelReview() {
           href="/"
           className="text-sm font-medium text-zinc-500 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
         >
-          ← All reviews
+          ← Todas as análises
         </Link>
 
         <header className="mt-6">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
-            Reel review · @thedoomguy_ai
+            Análise de reel · @thedoomguy_ai
           </p>
           <h1 className="text-4xl font-semibold leading-tight tracking-tight text-black dark:text-zinc-50">
-            CNVS: giving every AI agent the same memory — with plain text files
+            CNVS: dar a cada agente de IA a mesma memória — com arquivos de texto
+            simples
           </h1>
           <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            The pitch: stop re-explaining your project every time you switch
-            between Claude, Cursor and Codex. CNVS gives them a single shared
-            memory — and the &ldquo;database&rdquo; behind it is just JSONL files
-            the agents read and write directly.
+            A proposta: parar de reexplicar seu projeto toda vez que você troca
+            entre Claude, Cursor e Codex. O CNVS dá a eles uma única memória
+            compartilhada — e o &ldquo;banco de dados&rdquo; por trás disso são
+            apenas arquivos JSONL que os agentes leem e escrevem diretamente.
           </p>
           <a
             href={REEL_URL}
@@ -71,102 +72,107 @@ export default function CnvsReelReview() {
             rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-black dark:hover:bg-zinc-300"
           >
-            Watch the reel on Instagram ↗
+            Assistir ao reel no Instagram ↗
           </a>
         </header>
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <Stat value="JSONL" label="Storage format" />
-          <Stat value="No DB" label="Infrastructure" />
-          <Stat value="74%" label="Claimed Mem0 score" />
-          <Stat value="68.5%" label="Claimed for rivals" />
+          <Stat value="JSONL" label="Formato de armazenamento" />
+          <Stat value="Sem BD" label="Infraestrutura" />
+          <Stat value="74%" label="Score Mem0 alegado" />
+          <Stat value="68,5%" label="Alegado p/ concorrentes" />
         </div>
 
-        <Section heading="What the reel actually claims">
+        <Section heading="O que o reel realmente afirma">
           <p>
-            The creator argues that the interesting part of CNVS isn&rsquo;t the
-            interface that got it attention — it&rsquo;s the memory layer. Several
-            different coding agents point at the same store, so context built up
-            in one tool is instantly visible to the others.
+            O criador argumenta que a parte interessante do CNVS não é a
+            interface que chamou atenção — é a camada de memória. Vários agentes
+            de código diferentes apontam para o mesmo armazenamento, então o
+            contexto construído em uma ferramenta fica instantaneamente visível
+            para as outras.
           </p>
           <p>
-            The twist is how plain that store is: rather than a vector database
-            or a managed service, agents append to and read from{" "}
+            O detalhe é o quão simples é esse armazenamento: em vez de um banco
+            de dados vetorial ou um serviço gerenciado, os agentes acrescentam e
+            leem de arquivos{" "}
             <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-base text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
               .jsonl
             </code>{" "}
-            files — one JSON object per line. The headline number is a quoted
-            Mem0 benchmark where this simple approach lands at 74% versus 68.5%
-            for more complex competitors, framed as &ldquo;simple beats
-            complicated.&rdquo;
+            — um objeto JSON por linha. O número de destaque é um benchmark
+            citado da Mem0, no qual essa abordagem simples atinge 74% contra
+            68,5% de concorrentes mais complexos, enquadrado como &ldquo;simples
+            vence o complicado&rdquo;.
           </p>
         </Section>
 
-        <Section heading="What holds up">
+        <Section heading="O que se sustenta">
           <p>
             <strong className="font-semibold text-black dark:text-zinc-50">
-              The core pain is real.
+              A dor central é real.
             </strong>{" "}
-            Anyone who hops between AI coding tools knows the tax of re-pasting
-            context. A shared, tool-agnostic memory is a genuinely good framing,
-            and keeping it as flat files makes it transparent, diffable and easy
-            to version in git.
+            Qualquer um que pula entre ferramentas de IA para código conhece o
+            custo de recolar contexto. Uma memória compartilhada e independente
+            de ferramenta é um enquadramento genuinamente bom, e mantê-la como
+            arquivos planos a torna transparente, comparável por diff e fácil de
+            versionar no git.
           </p>
           <p>
             <strong className="font-semibold text-black dark:text-zinc-50">
-              JSONL is a sensible substrate.
+              JSONL é uma base sensata.
             </strong>{" "}
-            Append-only line-delimited JSON is exactly what a lot of logging and
-            memory systems already use. It&rsquo;s human-readable, streamable,
-            and needs zero infrastructure — which matters a lot for a local dev
-            workflow.
-          </p>
-        </Section>
-
-        <Section heading="What to be skeptical of">
-          <p>
-            <strong className="font-semibold text-black dark:text-zinc-50">
-              &ldquo;74% vs 68.5%&rdquo; is doing a lot of work.
-            </strong>{" "}
-            A single benchmark number, quoted without the task, dataset split or
-            retrieval setup, isn&rsquo;t evidence that simpler is better in
-            general. Mem0-style scores depend heavily on how memories are
-            retrieved, not just how they&rsquo;re stored — and the comparison
-            point (&ldquo;competitors&rdquo;) is left vague.
-          </p>
-          <p>
-            <strong className="font-semibold text-black dark:text-zinc-50">
-              &ldquo;No database&rdquo; hides real tradeoffs.
-            </strong>{" "}
-            Flat files are great until you need concurrent writes from multiple
-            agents, fast semantic search over thousands of entries, or
-            compaction so the file doesn&rsquo;t grow forever. Those are the
-            exact problems databases exist to solve; skipping them is a choice,
-            not a free win.
-          </p>
-          <p>
-            <strong className="font-semibold text-black dark:text-zinc-50">
-              &ldquo;Shared memory&rdquo; still needs retrieval.
-            </strong>{" "}
-            Reading the right slice of a growing JSONL file into a limited
-            context window is the hard part. The reel sells the storage; the
-            value lives in the part it doesn&rsquo;t show.
+            JSON delimitado por linha e somente-append é exatamente o que muitos
+            sistemas de log e memória já usam. É legível por humanos, transmite
+            em streaming e não exige infraestrutura — o que importa muito para um
+            fluxo de desenvolvimento local.
           </p>
         </Section>
 
-        <Section heading="Verdict">
+        <Section heading="Do que desconfiar">
           <p>
-            A sharp idea wrapped in a slightly oversold stat. The problem
-            (fragmented agent memory) is worth solving and JSONL is a reasonable,
-            refreshingly boring way to start. Treat the 74% headline as
-            marketing, not proof — but the underlying bet that you can get far
-            with plain files before reaching for heavy infrastructure is a fair
-            one, and easy enough to test on your own project.
+            <strong className="font-semibold text-black dark:text-zinc-50">
+              &ldquo;74% vs 68,5%&rdquo; carrega muito peso.
+            </strong>{" "}
+            Um único número de benchmark, citado sem a tarefa, a divisão do
+            dataset ou a configuração de recuperação, não é prova de que o mais
+            simples é melhor em geral. Scores no estilo Mem0 dependem fortemente
+            de como as memórias são recuperadas, não apenas de como são
+            armazenadas — e o ponto de comparação (&ldquo;concorrentes&rdquo;)
+            fica vago.
+          </p>
+          <p>
+            <strong className="font-semibold text-black dark:text-zinc-50">
+              &ldquo;Sem banco de dados&rdquo; esconde trade-offs reais.
+            </strong>{" "}
+            Arquivos planos são ótimos até você precisar de escritas concorrentes
+            de vários agentes, busca semântica rápida sobre milhares de entradas
+            ou compactação para o arquivo não crescer para sempre. Esses são
+            exatamente os problemas que os bancos de dados existem para resolver;
+            ignorá-los é uma escolha, não uma vantagem grátis.
+          </p>
+          <p>
+            <strong className="font-semibold text-black dark:text-zinc-50">
+              &ldquo;Memória compartilhada&rdquo; ainda precisa de recuperação.
+            </strong>{" "}
+            Ler a fatia certa de um arquivo JSONL crescente para uma janela de
+            contexto limitada é a parte difícil. O reel vende o armazenamento; o
+            valor mora na parte que ele não mostra.
+          </p>
+        </Section>
+
+        <Section heading="Veredito">
+          <p>
+            Uma ideia afiada embrulhada em uma estatística um pouco exagerada. O
+            problema (memória fragmentada entre agentes) vale a pena resolver e o
+            JSONL é uma forma razoável e refrescantemente sem graça de começar.
+            Trate o destaque dos 74% como marketing, não como prova — mas a
+            aposta de fundo, de que dá para ir longe com arquivos simples antes
+            de recorrer a infraestrutura pesada, é justa e fácil o suficiente de
+            testar no seu próprio projeto.
           </p>
         </Section>
 
         <footer className="mt-14 border-t border-zinc-200 pt-6 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-          Review based on the reel by{" "}
+          Análise baseada no reel de{" "}
           <a
             href={REEL_URL}
             target="_blank"
@@ -175,8 +181,8 @@ export default function CnvsReelReview() {
           >
             @thedoomguy_ai
           </a>
-          . Benchmark figures are the creator&rsquo;s claims, not independently
-          verified.
+          . Os números de benchmark são alegações do criador, não verificados de
+          forma independente.
         </footer>
       </article>
     </div>

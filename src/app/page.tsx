@@ -3,11 +3,11 @@ import Link from "next/link";
 const reels = [
   {
     href: "/reels/cnvs",
-    title: "CNVS: shared AI memory in plain JSONL files",
+    title: "CNVS: memória de IA compartilhada em arquivos JSONL",
     creator: "@thedoomguy_ai",
     summary:
-      "A multi-agent tool that lets Claude, Cursor and Codex share one memory — no database, just JSONL the agents read and write directly.",
-    verdict: "Promising idea, oversold benchmark",
+      "Uma ferramenta multiagente que permite que Claude, Cursor e Codex compartilhem uma única memória — sem banco de dados, apenas arquivos JSONL que os agentes leem e escrevem diretamente.",
+    verdict: "Ideia promissora, benchmark exagerado",
   },
 ];
 
@@ -17,14 +17,14 @@ export default function Home() {
       <main className="w-full max-w-3xl flex-1 px-6 py-20 sm:px-10">
         <header className="mb-14">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
-            Reel Reviews
+            Análises de Reels
           </p>
           <h1 className="text-4xl font-semibold tracking-tight text-black dark:text-zinc-50">
-            Honest breakdowns of AI &amp; tech reels
+            Análises honestas de reels de IA &amp; tecnologia
           </h1>
           <p className="mt-4 max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            I pull apart short videos that make big claims — what holds up, what
-            is marketing, and what is actually worth trying.
+            Eu disseco vídeos curtos que fazem grandes afirmações — o que se
+            sustenta, o que é marketing e o que realmente vale a pena testar.
           </p>
         </header>
 

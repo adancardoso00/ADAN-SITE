@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Adan — Reel Reviews",
-  description: "Short, honest breakdowns of AI & tech reels worth thinking about.",
+  title: "Adan — Análises de Reels",
+  description:
+    "Análises curtas e honestas de reels de IA e tecnologia que valem a reflexão.",
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
