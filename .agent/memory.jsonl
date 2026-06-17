@@ -1,0 +1,6 @@
+{"ts":"2026-06-17T01:10:00Z","agent":"claude","type":"context","summary":"Scaffolded Next.js 16 (App Router, Turbopack) + Tailwind v4 + TypeScript site named ADAN-SITE.","tags":["setup","nextjs"]}
+{"ts":"2026-06-17T01:20:00Z","agent":"claude","type":"decision","summary":"Site theme is 'Análises de Reels' — each reel review is src/app/reels/<slug>/page.tsx, listed from the reels array in src/app/page.tsx.","tags":["architecture","content"]}
+{"ts":"2026-06-17T01:21:00Z","agent":"claude","type":"context","summary":"Added first review at /reels/cnvs: breakdown of @thedoomguy_ai's reel on CNVS (shared AI memory via JSONL, no database).","tags":["content","cnvs"]}
+{"ts":"2026-06-17T01:30:00Z","agent":"claude","type":"decision","summary":"All site content and metadata are pt-BR; root <html lang> is 'pt-BR'.","tags":["i18n","content"]}
+{"ts":"2026-06-17T01:45:00Z","agent":"claude","type":"decision","summary":"Adopted shared agent memory: AGENTS.md is the single source of truth, CLAUDE.md imports it via @AGENTS.md, Cursor reads .cursor/rules/shared-memory.mdc, all pointing at this file.","tags":["memory","tooling"]}
+{"ts":"2026-06-17T14:42:56.278Z","agent":"human","type":"context","summary":"Solicitou a memória compartilhada entre Claude, Cursor e Codex","tags":["tooling","memory"]}

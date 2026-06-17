@@ -1,0 +1,18 @@
+---
+description: Shared agent memory for ADAN-SITE
+alwaysApply: true
+---
+
+This repo shares one memory across Claude Code, Cursor and Codex.
+
+- Read `AGENTS.md` (the single source of truth) and `.agent/memory.jsonl` at the
+  start of each session to recover prior decisions. Newest entries are last.
+- After a notable decision or change, append one line to `.agent/memory.jsonl`:
+
+  ```bash
+  node scripts/remember.mjs cursor decision "<short summary>" [tag1,tag2]
+  ```
+
+- The memory is append-only — never edit or delete existing lines.
+
+Full convention: `.agent/README.md`.
