@@ -65,3 +65,25 @@ jq -c 'select(.type=="decision")' .agent/memory.jsonl
 # filter by tag
 jq -c 'select(.tags // [] | index("i18n"))' .agent/memory.jsonl
 ```
+
+---
+
+## Lembretes pessoais (TDAH-friendly)
+
+Separado da memória dos agentes, há um inbox de lembretes em
+[`lembretes.jsonl`](lembretes.jsonl) — também append-only, também event-sourced.
+A ideia: **capturar sem fricção**, depois **triar** (decidir *acionar* ou
+*arquivar*) e **concluir**.
+
+```bash
+node scripts/lembrete.mjs add "Ligar pro dentista" saude   # capturar
+node scripts/lembrete.mjs resumo                            # ver pendentes
+node scripts/lembrete.mjs acionar l3                        # decidi: vou fazer
+node scripts/lembrete.mjs arquivar l3                       # decidi: não fazer
+node scripts/lembrete.mjs feito l3                          # concluído
+```
+
+**Você é lembrado automaticamente:** o hook `.claude/hooks/session-start.sh`
+roda no início de cada sessão do Claude Code e imprime os pendentes — então a
+lista te encontra, você não precisa lembrar de procurá-la. Configurado em
+`.claude/settings.json`.
