@@ -6,3 +6,4 @@
 {"ts":"2026-06-17T14:42:56.278Z","agent":"human","type":"context","summary":"Solicitou a memória compartilhada entre Claude, Cursor e Codex","tags":["tooling","memory"]}
 {"ts":"2026-06-17T15:15:11.354Z","agent":"claude","type":"decision","summary":"Adicionado inbox de lembretes (lembretes.jsonl + scripts/lembrete.mjs) e hook SessionStart que mostra pendentes ao abrir o Claude Code","tags":["tdah","lembretes","tooling"]}
 {"ts":"2026-06-18T19:31:13.127Z","agent":"human","type":"context","summary":"Assunto-chave do Adan: memória compartilhada + lembretes para TDAH (decidir acionar ou não). Itens abertos: l1 ver CNVS real (link da bio @thedoomguy_ai), l2 avaliar agentmemory via MCP, l3 merge do PR #4.","tags":["cnvs","memoria","tdah"]}
+{"ts":"2026-06-19T20:16:36.742Z","agent":"claude","type":"decision","summary":"PR #4 mergeado (squash) — site Análises de Reels + memória compartilhada + lembretes TDAH agora oficiais na branch base","tags":["pr","memoria"]}
