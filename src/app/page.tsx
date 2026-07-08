@@ -53,6 +53,16 @@ export default function Home() {
             </li>
           ))}
         </ul>
+
+        <aside className="mt-14 border-t border-zinc-200 pt-6 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+          Fora da programação:{" "}
+          <Link
+            href="/tdah"
+            className="font-medium text-zinc-700 underline hover:text-black dark:text-zinc-300 dark:hover:text-zinc-50"
+          >
+            🧠 Entenda como o cérebro do Adan funciona
+          </Link>
+        </aside>
       </main>
     </div>
   );
