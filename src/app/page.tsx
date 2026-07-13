@@ -2,6 +2,14 @@ import Link from "next/link";
 
 const reels = [
   {
+    href: "/reels/3-coisas-legais",
+    title: "“3 coisas legais” #8: FLIM, cerâmica da Callahan e Kurzgesagt",
+    creator: "@isadorabitten",
+    summary:
+      "Um quadro de curadoria com três indicações — o banco de referências audiovisuais FLIM (chamado de “Film AI” no reel), cerâmica com humor e o vídeo do Kurzgesagt sobre gratidão. Indicações reais, com dois detalhes imprecisos.",
+    verdict: "Curadoria genuína, detalhes imprecisos",
+  },
+  {
     href: "/reels/cnvs",
     title: "CNVS: memória de IA compartilhada em arquivos JSONL",
     creator: "@thedoomguy_ai",
