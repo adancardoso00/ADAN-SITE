@@ -1,3 +1,4 @@
 {"ev":"add","id":"l1","ts":"2026-06-17T14:50:00Z","texto":"Ver o CNVS exato do vídeo — colar aqui o link da bio do @thedoomguy_ai","tags":["cnvs"]}
 {"ev":"add","id":"l2","ts":"2026-06-17T14:50:00Z","texto":"Decidir se vale configurar o agentmemory (memória via MCP, com busca semântica)","tags":["tooling"]}
 {"ev":"add","id":"l3","ts":"2026-06-17T14:50:00Z","texto":"Marcar o PR #4 como 'Ready for review' e fazer merge quando aprovar","tags":["pr"]}
+{"ev":"feito","id":"l3","ts":"2026-07-14T00:24:10.058Z"}
