@@ -161,6 +161,8 @@ export const arsenal: Section[] = [
       { trigger: "/anthropic-skills:referencia-primeiro", desc: "Escolhe referência real antes de criar visual (sua skill)" },
       { trigger: "/anthropic-skills:illustrator-corrigir-texto", desc: "Substitui texto em .ai via ExtendScript (sua skill)" },
       { trigger: "/anthropic-skills:mac-cleanup-boost", desc: "Libera RAM/disco do Mac (sua skill)" },
+      { trigger: "/anthropic-skills:lz114-episodio", desc: "Episódio da série de drift LZ114 do Lorenzo (sua skill)" },
+      { trigger: "/anthropic-skills:artifact-emulator", desc: "Vê artifact renderizado + screenshot + console errors" },
       { trigger: "/anthropic-skills:deep-research", desc: "Pesquisa multi-source com subagents" },
       { trigger: "/anthropic-skills:canvas-design", desc: "Poster/arte estática em PNG/PDF" },
       { trigger: "/anthropic-skills:theme-factory", desc: "10 temas pré-prontos pra artifacts" },
